@@ -11,7 +11,7 @@ const Roles = () => {
   const { user } = useContext(AuthContext);
 
   const fetchRoles = async () => {
-    const res = await API.get("/roles");
+    const res = await API.get("/api/roles");
     setRoles(res.data);
   };
 
@@ -20,7 +20,7 @@ const Roles = () => {
   }, []);
 
   const handleCreate = async () => {
-    await API.post("/roles", {
+    await API.post("/api/roles", {
       name,
       permissions: permissions.split(",").map(p => p.trim())
     });

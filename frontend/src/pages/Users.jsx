@@ -20,7 +20,7 @@ const Users = () => {
 
   const fetchUsers = async () => {
     try {
-      const res = await API.get("/users");
+      const res = await API.get("/api/users");
       setUsers(res.data);
     } catch (error) {
       console.log(error);
@@ -28,15 +28,15 @@ const Users = () => {
   };
 
   const fetchMeta = async () => {
-        const rolesRes = await API.get("/roles");
-        const deptRes = await API.get("/departments");
+        const rolesRes = await API.get("/api/roles");
+        const deptRes = await API.get("/api/departments");
 
         setRoles(rolesRes.data);
         setDepartments(deptRes.data);
 };
 
 const handleDelete = async (id) => {
-  await API.delete(`/users/${id}`);
+  await API.delete(`/api/users/${id}`);
   fetchUsers();
 };
 
@@ -46,7 +46,7 @@ const handleDelete = async (id) => {
   }, []);
 
   const handleCreateUser = async () => {
-  await API.post("/users", {
+  await API.post("/api/users", {
     name,
     email,
     password,
@@ -58,7 +58,7 @@ const handleDelete = async (id) => {
 };
 
 const handleUpdate = async () => {
-  await API.put(`/users/${editUser._id}`, {
+  await API.put(`/api/users/${editUser._id}`, {
     role: editUser.role,
     department: editUser.department
   });

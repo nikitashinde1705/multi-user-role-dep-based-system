@@ -10,7 +10,7 @@ const Departments = () => {
   const { user } = useContext(AuthContext);
 
   const fetchDepartments = async () => {
-    const res = await API.get("/departments");
+    const res = await API.get("/api/departments");
     setDepartments(res.data);
   };
 
@@ -19,7 +19,7 @@ const Departments = () => {
   }, []);
 
   const handleCreate = async () => {
-    await API.post("/departments", { name });
+    await API.post("/api/departments", { name });
     setName("");
     fetchDepartments();
   };
